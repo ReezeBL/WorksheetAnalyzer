@@ -4,14 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Matreshka"
-        xmlns:core="clr-namespace:Matreshka.Core"
         xmlns:views="clr-namespace:Matreshka.Views"
+        xmlns:controls="http://schemas.microsoft.com/wpf/2008/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="492.664" Width="795.734">
-    <StackPanel Orientation="Horizontal" DataContext="{DynamicResource MainView}">
+        Title="Анкеты" Height="492.664" Width="568.734" ResizeMode="CanMinimize">
+
+    <StackPanel Orientation="Horizontal" DataContext="{StaticResource MainView}">
         <StackPanel>
-            <ListBox MinHeight="300" Margin="5" MaxWidth="200"
+            <ListBox MinHeight="300" Margin="5" MinWidth="200" MaxWidth="400"
                      ItemsSource="{Binding Worksheets}"
+                     ItemTemplate="{StaticResource WorksheetTemplate}"
                      SelectedItem="{Binding SelectedItem}">
                 <ListBox.ContextMenu>
                     <ContextMenu>
@@ -19,20 +21,58 @@
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>
-            <Button HorizontalAlignment="Left" Margin="10">Добавить нового</Button>
-            <Button HorizontalAlignment="Left" Margin="10,0,0,0">Удалить</Button>
+            <Button HorizontalAlignment="Left" Margin="10" Command="{Binding CreateUser}">Добавить нового</Button>
+            <Button HorizontalAlignment="Left" Margin="10,0,0,0" Command="{Binding RemoveUser}">Удалить</Button>
+            <Button HorizontalAlignment="Left" Margin="10,30,0,0" Command="{Binding SaveUsers}">Сохранить</Button>
         </StackPanel>
         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-        <Grid></Grid>
-</StackPanel>
-    <Window.Resources>
-        <DataTemplate DataType="core:Worksheet" x:Key="WorksheetTemplate">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Name}" Margin="0,0,15,0"/>
-                <TextBlock Text="{Binding Surname}"/>
-            </StackPanel>
-        </DataTemplate>
-        
-        <views:MainView  x:Key="MainView"></views:MainView>
-    </Window.Resources>
+        <Border Margin="5" BorderThickness="2" BorderBrush="Black" Visibility="{Binding SelectedItem, TargetNullValue=Collapsed}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel DataContext="{Binding SelectedItem}">
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock MinWidth="120">Фамилия</TextBlock>
+                        <TextBox Text="{Binding Surname}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock MinWidth="120">Имя</TextBlock>
+                        <TextBox Text="{Binding Name}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock MinWidth="120">Отчество</TextBlock>
+                        <TextBox Text="{Binding Middlename}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock MinWidth="120">Город</TextBlock>
+                        <TextBox Text="{Binding City}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock MinWidth="120">Пол</TextBlock>
+                        <ComboBox ItemsSource="{x:Static views:MainView.Genders}" SelectedItem="{Binding Gender}" Margin="10,0,0,0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock MinWidth="120">Дата рождения</TextBlock>
+                        <DatePicker SelectedDate="{Binding BirthDate}" DisplayDateStart="1/01/1995" Margin="10,0,0,0"></DatePicker>
+                    </StackPanel>
+
+                    <Expander Header="Персональные данные" DataContext="{Binding PersonalData}" ContentTemplate="{StaticResource PersonalDataTemplate}"/>
+                    <Expander Header="Пожелания" DataContext="{Binding Desires}" ContentTemplate="{StaticResource PersonalWishesTemplate}"/>
+                    <Expander Header="Кандидаты">
+                        <StackPanel>
+                        <ListBox MinHeight="50" MaxHeight="100" 
+                                 ItemsSource="{Binding Candidats}"
+                                 ItemTemplate="{StaticResource WorksheetTemplate}"/>
+                            <Button HorizontalAlignment="Left" Margin="10" DataContext="{StaticResource MainView}" Command="{Binding SearchCandidats}">Найти кандидатов</Button>
+                        </StackPanel>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </StackPanel>
+    
 </Window>
