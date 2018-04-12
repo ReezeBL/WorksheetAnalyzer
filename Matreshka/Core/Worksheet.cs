@@ -10,6 +10,8 @@ namespace Matreshka.Core
         private string name = "Иван";
         private string surname = "Иванов";
         private string middlename = "Иванович";
+        private PersonalData personalData = new PersonalData();
+        private PersonalData desires = new PersonalData();
 
         public string Name
         {
@@ -48,8 +50,27 @@ namespace Matreshka.Core
         public Gender Gender { get; set; }
         public DateTime BirthDate { get; set; } = DateTime.Today;
 
-        public PersonalData PersonalData { get; set; } = new PersonalData();
-        public PersonalData Desires { get; set; } = new PersonalData();
+        public PersonalData PersonalData
+        {
+            get => personalData;
+            set
+            {
+                if (Equals(value, personalData)) return;
+                personalData = value;
+                OnPropertyChanged(nameof(PersonalData));
+            }
+        }
+
+        public PersonalData Desires
+        {
+            get => desires;
+            set
+            {
+                if (Equals(value, desires)) return;
+                desires = value;
+                OnPropertyChanged(nameof(Desires));
+            }
+        }
 
         [JsonIgnore]
         public ObservableCollection<Worksheet> Candidats { get; set; } = new ObservableCollection<Worksheet>();
