@@ -4,7 +4,7 @@ namespace Matreshka.Core
 {
     public enum VarBool
     {
-        [Description("-----")]
+        [Description("-----;Не важно")]
         None,
         [Description("Да")]
         Yes,

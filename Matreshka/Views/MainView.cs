@@ -33,6 +33,14 @@ namespace Matreshka.Views
         public static readonly Gender[] Genders = {Gender.Male, Gender.Female};
         public static readonly VarBool[] VarBools = {VarBool.None, VarBool.Yes, VarBool.No};
 
+        public static readonly EyeColor[] EyeColors =
+            {EyeColor.Black, EyeColor.Blue, EyeColor.Brown, EyeColor.Green, EyeColor.Grey, EyeColor.Other};
+
+        public static readonly HairColor[] HairColors =
+            { HairColor.Black, HairColor.Blond, HairColor.Grey, HairColor.Red, HairColor.Other};
+
+        public static readonly Growth[] Growths = {Growth.Little, Growth.Small, Growth.High, Growth.Other };
+
         public MainView()
         {
             CreateUser = new RelayCommand(CreateNewUser);

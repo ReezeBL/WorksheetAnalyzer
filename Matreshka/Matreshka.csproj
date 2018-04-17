@@ -75,7 +75,11 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AsyncCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Core\EyeColor.cs" />
     <Compile Include="Core\Gender.cs" />
+    <Compile Include="Core\Growth.cs" />
+    <Compile Include="Core\HairColor.cs" />
+    <Compile Include="Core\Nationality.cs" />
     <Compile Include="Core\PersonalData.cs" />
     <Compile Include="Core\VarBool.cs" />
     <Compile Include="Core\Worksheet.cs" />

@@ -13,224 +13,32 @@
                 <TextBlock Text="{Binding Middlename}" Margin="0,0,0,0"/>
             </StackPanel>
         </DataTemplate>
-
-        <DataTemplate x:Key="PersonalDataTemplate" DataType="core:PersonalData">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Национальность</TextBlock>
-                    <TextBox Text="{Binding Nationality}" Margin="10,0,0,0" MinWidth="120"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Цвет глаз</TextBlock>
-                    <TextBox Text="{Binding EyeColor}" Margin="10,0,0,0" MinWidth="120"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Цвет волос</TextBlock>
-                    <TextBox Text="{Binding HairColor}" Margin="10,0,0,0" MinWidth="120"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Рост</TextBlock>
-                    <TextBox Text="{Binding Growth}" Margin="10,0,0,0" MinWidth="120"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Вес</TextBlock>
-                    <TextBox Text="{Binding Weight}" Margin="10,0,0,0" MinWidth="120"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Вредные привычки</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding BadHabbits}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Любовь к детям</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding LoveChildren}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Юмор</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Humor}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Доброта</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Kindness}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Умение готовить</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Cookery}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Ревность</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Jealousy}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Наличие машины</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding HaveCar}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Постоянный доход</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding FixedIncome}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Романтик</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Romance}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-            </StackPanel>
-        </DataTemplate>
-
-        <DataTemplate x:Key="PersonalWishesTemplate" DataType="core:PersonalData">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Любимый цвет глаз</TextBlock>
-                    <TextBox Text="{Binding EyeColor}" Margin="10,0,0,0" MinWidth="120"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Вредные привычки</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding BadHabbits}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Любовь к детям</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding LoveChildren}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Юмор</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Humor}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Доброта</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Kindness}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Умение готовить</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Cookery}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Ревность</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Jealousy}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Наличие машины</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding HaveCar}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Постоянный доход</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding FixedIncome}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBlock MinWidth="120">Романтик</TextBlock>
-                    <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Romance}" Margin="10,0,0,0">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-            </StackPanel>
-        </DataTemplate>
-
         <views:MainView  x:Key="MainView"></views:MainView>
 
+        <Style x:Key="MyStyle">
+            <Setter Property="Control.FontFamily" Value="Calibri"></Setter>
+            <Setter Property="Control.FontSize" Value="14"></Setter>
+            <Setter Property="Control.Background" Value="#F8A5C0"></Setter>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="#F8A5C0"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="HotPink"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="#F8A5C0"/>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#F8A5C0"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Background" Value="#F8A5C0"/>
+        </Style>
     </Application.Resources>
 </Application>

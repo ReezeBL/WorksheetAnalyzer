@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Matreshka"
         xmlns:views="clr-namespace:Matreshka.Views"
-        xmlns:controls="http://schemas.microsoft.com/wpf/2008/toolkit"
         mc:Ignorable="d"
-        Title="Анкеты" Height="492.664" Width="568.734" ResizeMode="CanMinimize">
+        Title="Анкеты" Height="492.664" Width="568.734" ResizeMode="CanMinimize" Style="{StaticResource MyStyle}">
 
     <StackPanel Orientation="Horizontal" DataContext="{StaticResource MainView}">
         <StackPanel>
@@ -50,7 +49,7 @@
                         <ComboBox ItemsSource="{x:Static views:MainView.Genders}" SelectedItem="{Binding Gender}" Margin="10,0,0,0">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                    <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
@@ -68,15 +67,27 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock MinWidth="120">Цвет глаз</TextBlock>
-                                <TextBox Text="{Binding EyeColor}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                                <ComboBox ItemsSource="{x:Static views:MainView.EyeColors}" SelectedItem="{Binding EyeColor}" Margin="10,0,0,0">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock MinWidth="120">Цвет волос</TextBlock>
-                                <TextBox Text="{Binding HairColor}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                                <ComboBox ItemsSource="{x:Static views:MainView.HairColors}" SelectedItem="{Binding HairColor}" Margin="10,0,0,0">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock MinWidth="120">Рост</TextBlock>
-                                <TextBox Text="{Binding Growth}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                                <TextBox Text="{Binding Converter={x:Static local:EnumConverter.Instance}, Path=Growth}" Margin="10,0,0,0" MinWidth="120"></TextBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock MinWidth="120">Вес</TextBlock>
@@ -87,7 +98,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding BadHabbits}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -97,7 +108,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding LoveChildren}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -107,7 +118,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Humor}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -117,7 +128,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Kindness}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -128,7 +139,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Cookery}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -138,7 +149,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Jealousy}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -148,7 +159,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding HaveCar}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -158,7 +169,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding FixedIncome}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -168,7 +179,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Romance}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -178,15 +189,31 @@
                     <Expander Header="Пожелания" DataContext="{Binding Desires}">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock MinWidth="120">Желаемый рост</TextBlock>
+                                <ComboBox ItemsSource="{x:Static views:MainView.Growths}" SelectedItem="{Binding Growth}" Margin="10,0,0,0">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock MinWidth="120">Любимый цвет глаз</TextBlock>
-                                <TextBox Text="{Binding EyeColor}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                                <ComboBox ItemsSource="{x:Static views:MainView.EyeColors}" SelectedItem="{Binding EyeColor}" Margin="10,0,0,0">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock MinWidth="120">Вредные привычки</TextBlock>
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding BadHabbits}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -196,7 +223,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding LoveChildren}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -206,7 +233,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Humor}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -216,7 +243,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Kindness}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -227,7 +254,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Cookery}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -237,7 +264,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Jealousy}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -247,7 +274,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding HaveCar}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -257,7 +284,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding FixedIncome}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
@@ -267,7 +294,7 @@
                                 <ComboBox ItemsSource="{x:Static views:MainView.VarBools}" SelectedItem="{Binding Romance}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.Instance}}"></TextBlock>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.SecondDescriptionConverter}}"></TextBlock>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>

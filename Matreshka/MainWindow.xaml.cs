@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Matreshka.Core;
 
 namespace Matreshka
 {
@@ -27,9 +28,17 @@ namespace Matreshka
         }
     }
 
-    public class DescriptionConverter : IValueConverter
+    public sealed class DescriptionConverter : IValueConverter
     {
-        public static readonly DescriptionConverter Instance = new DescriptionConverter();
+        public static readonly DescriptionConverter FirstDescriptionConverter = new DescriptionConverter(0);
+        public static readonly DescriptionConverter SecondDescriptionConverter = new DescriptionConverter(1);
+
+        private readonly int selector;
+
+        private DescriptionConverter(int selector)
+        {
+            this.selector = selector;
+        }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -39,7 +48,7 @@ namespace Matreshka
             var field = value.GetType().GetField(value.ToString());
             foreach (var attrib in field.GetCustomAttributes(false))
             {
-                if (attrib is DescriptionAttribute desc) return desc.Description;
+                if (attrib is DescriptionAttribute desc) return SelectFromDescription(desc.Description);
             }
             return value.ToString();
         }
@@ -47,6 +56,37 @@ namespace Matreshka
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+
+        private string SelectFromDescription(string description)
+        {
+            var split = description.Split(';');
+            return split.Length == 1 ? split[0] : split[selector];
+        }
+    }
+
+    public class EnumConverter : IValueConverter
+    {
+        public static readonly EnumConverter Instance = new EnumConverter();
+
+        public object Convert(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
+        {
+            if (!(value is Enum enumValue))
+                return 0;
+            return System.Convert.ChangeType(enumValue, enumValue.GetTypeCode());
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
+        {
+            if (value != null)
+            {
+                var intVale = int.Parse(value.ToString());
+                return (Growth)intVale;
+            }
+
+            return null;
         }
     }
 }

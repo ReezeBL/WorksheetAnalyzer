@@ -10,7 +10,7 @@ namespace Matreshka.Core
         private string name = "Иван";
         private string surname = "Иванов";
         private string middlename = "Иванович";
-        private PersonalData personalData = new PersonalData();
+        private PersonalData personalData = new PersonalData(){EyeColor = EyeColor.Blue, HairColor = HairColor.Black};
         private PersonalData desires = new PersonalData();
 
         public string Name

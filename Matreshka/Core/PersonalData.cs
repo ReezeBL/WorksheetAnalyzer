@@ -4,14 +4,14 @@ namespace Matreshka.Core
 {
     public class PersonalData : AbstractView
     {
-        private string eyeColor;
-        private string hairColor;
-        private string nationality;
+        private EyeColor eyeColor = EyeColor.Other;
+        private HairColor hairColor = HairColor.Other;
+        private Nationality nationality;
         private VarBool badHabbits = VarBool.None;
         private VarBool loveChildren = VarBool.None;
         private VarBool humor = VarBool.None;
         private VarBool kindness = VarBool.None;
-        private int? growth;
+        private Growth growth = Growth.Other;
         private int? weight;
         private VarBool cookery = VarBool.None;
         private VarBool jealousy = VarBool.None;
@@ -19,7 +19,7 @@ namespace Matreshka.Core
         private VarBool fixedIncome = VarBool.None;
         private VarBool romance = VarBool.None;
 
-        public string EyeColor  
+        public EyeColor EyeColor  
         {
             get => eyeColor;
             set
@@ -30,7 +30,7 @@ namespace Matreshka.Core
             }
         }
 
-        public string HairColor
+        public HairColor HairColor
         {
             get => hairColor;
             set
@@ -41,7 +41,7 @@ namespace Matreshka.Core
             }
         }
 
-        public string Nationality
+        public Nationality Nationality
         {
             get => nationality;
             set
@@ -96,7 +96,7 @@ namespace Matreshka.Core
             }
         }
 
-        public int? Growth
+        public Growth Growth
         {
             get => growth;
             set
