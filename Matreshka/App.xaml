@@ -18,27 +18,6 @@
         <Style x:Key="MyStyle">
             <Setter Property="Control.FontFamily" Value="Calibri"></Setter>
             <Setter Property="Control.FontSize" Value="14"></Setter>
-            <Setter Property="Control.Background" Value="#F8A5C0"></Setter>
-        </Style>
-
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Background" Value="#F8A5C0"/>
-
-            <Style.Triggers>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="Background" Value="HotPink"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style TargetType="{x:Type ListBox}">
-            <Setter Property="Background" Value="#F8A5C0"/>
-        </Style>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#F8A5C0"/>
-        </Style>
-        <Style TargetType="{x:Type ComboBox}">
-            <Setter Property="Background" Value="#F8A5C0"/>
         </Style>
     </Application.Resources>
 </Application>
