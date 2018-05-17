@@ -6,9 +6,9 @@ namespace Matreshka.Core
     {
         public static bool Compare(Worksheet first, Worksheet second)
         {
-            return first.Gender != second.Gender &&
-                   Score(first.Desires, second.PersonalData) >= 0.5f &&
-                   Score(second.Desires, first.PersonalData) >= 0.5f;
+            return !second.HasPair && first.Gender != second.Gender &&
+                   Score(first.Desires, second.PersonalData) >= 0.7f &&
+                   Score(second.Desires, first.PersonalData) >= 0.7f;
         }
 
         private static float Score(PersonalData origin, PersonalData other)

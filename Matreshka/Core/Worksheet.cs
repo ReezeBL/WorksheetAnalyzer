@@ -46,6 +46,9 @@ namespace Matreshka.Core
             }
         }
 
+        public string PhoneNumber { get; set; }
+        public bool HasPair { get; set; }
+
         public string City { get; set; }
         public Gender Gender { get; set; }
         public DateTime BirthDate { get; set; } = DateTime.Today;

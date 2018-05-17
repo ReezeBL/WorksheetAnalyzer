@@ -46,10 +46,13 @@ namespace Matreshka
                 return "null";
 
             var field = value.GetType().GetField(value.ToString());
+            if (field == null)
+                return "null";
             foreach (var attrib in field.GetCustomAttributes(false))
             {
                 if (attrib is DescriptionAttribute desc) return SelectFromDescription(desc.Description);
             }
+
             return value.ToString();
         }
 

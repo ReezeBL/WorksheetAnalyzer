@@ -4,7 +4,7 @@ namespace Matreshka.Core
 {
     public enum HairColor
     {
-        [Description("Серые")]
+        [Description("Русые")]
         Grey,
         [Description("Блонд")]
         Blond,

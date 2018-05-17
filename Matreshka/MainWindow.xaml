@@ -11,7 +11,7 @@
     <StackPanel Orientation="Horizontal" DataContext="{StaticResource MainView}">
         <StackPanel>
             <ListBox MinHeight="300" Margin="5" MinWidth="200" MaxWidth="400"
-                     ItemsSource="{Binding Worksheets}"
+                     ItemsSource="{Binding FilteredWorksheets}"
                      ItemTemplate="{StaticResource WorksheetTemplate}"
                      SelectedItem="{Binding SelectedItem}">
                 <ListBox.ContextMenu>
@@ -20,6 +20,7 @@
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>
+            <TextBox Margin="10, 0 ,10, 0" Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <Button HorizontalAlignment="Left" Margin="10" Command="{Binding CreateUser}">Добавить нового</Button>
             <Button HorizontalAlignment="Left" Margin="10,0,0,0" Command="{Binding RemoveUser}">Удалить</Button>
             <Button HorizontalAlignment="Left" Margin="10,30,0,0" Command="{Binding SaveUsers}">Сохранить</Button>
@@ -59,11 +60,27 @@
                         <DatePicker SelectedDate="{Binding BirthDate}" DisplayDateStart="1/01/1995" Margin="10,0,0,0"></DatePicker>
                     </StackPanel>
 
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock MinWidth="120">Телефон</TextBlock>
+                        <TextBox Text="{Binding PhoneNumber}" MinWidth="120" Margin="10,0,0,0"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock MinWidth="120">Нашел пару:</TextBlock>
+                        <CheckBox IsChecked="{Binding HasPair}" Margin="10,0,0,0"></CheckBox>
+                    </StackPanel>
+
                     <Expander Header="Персональные данные" DataContext="{Binding PersonalData}">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock MinWidth="120">Национальность</TextBlock>
-                                <TextBox Text="{Binding Nationality}" Margin="10,0,0,0" MinWidth="120"></TextBox>
+                                <ComboBox ItemsSource="{x:Static views:MainView.Nationalities}" SelectedItem="{Binding Nationality}" Margin="10,0,0,0">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={x:Static local:DescriptionConverter.FirstDescriptionConverter}}"></TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock MinWidth="120">Цвет глаз</TextBlock>
@@ -199,7 +216,7 @@
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
-                                <TextBlock MinWidth="120">Любимый цвет глаз</TextBlock>
+                                <TextBlock MinWidth="120">Цвет глаз</TextBlock>
                                 <ComboBox ItemsSource="{x:Static views:MainView.EyeColors}" SelectedItem="{Binding EyeColor}" Margin="10,0,0,0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
